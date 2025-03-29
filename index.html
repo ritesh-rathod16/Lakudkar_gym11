@@ -3,541 +3,584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lakudkar Gym - Fitness Redefined</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #ff5e14;
-            --dark: #121212;
-            --light: #f8f8f8;
-            --text: #ffffff;
-            --text-secondary: #cccccc;
-            --card-bg: rgba(40, 40, 40, 0.9);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            background-color: var(--dark);
-            line-height: 1.5;
-        }
-
-        /* Header */
-        header {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 12px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--primary);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 80px 5% 40px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://i.pinimg.com/736x/de/8f/57/de8f579651b2e0a6cddbd359182f95ad.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: var(--primary);
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            margin: 0 5px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 94, 20, 0.4);
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        /* Cards */
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 10px 0;
-            color: var(--primary);
-        }
-
-        .card ul {
-            list-style: none;
-            margin: 15px 0;
-        }
-
-        .card li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .card li:before {
-            content: "•";
-            color: var(--primary);
-            position: absolute;
-            left: 0;
-        }
-
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        /* Two Column Layout */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            align-items: center;
-        }
-
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        th {
-            color: var(--primary);
-        }
-
-        /* Images */
-        .responsive-img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-        }
-
-        /* Contact Form */
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            background-color: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 4px;
-            color: var(--text);
-        }
-
-        /* Footer */
-        footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 30px 5%;
-            text-align: center;
-            border-top: 1px solid var(--primary);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .footer-links a {
-            color: var(--text);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-            
-            nav ul {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Lakudkar Gym - Premium Fitness Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg" alt="Lakudkar Gym">
-            <span class="logo-text">Lakudkar Gym</span>
+    <!-- Background with 50% transparent black overlay -->
+    <div class="background-overlay"></div>
+    <div class="background-image"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg" alt="Lakudkar Gym Logo" class="logo">
+                <span class="gym-name">Lakudkar Gym</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#membership" class="nav-link">Membership Plans</a>
+                <a href="#location" class="nav-link">Location</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#plans">Plans</a></li>
-                <li><a href="#diet">Diet</a></li>
-                <li><a href="#workout">Workout</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section id="home" class="hero-section">
         <div class="hero-content">
-            <h1>Transform Your Fitness Journey</h1>
-            <p>Personalized Training • Expert Coaches • Guaranteed Results</p>
-            <div>
-                <a href="#plans" class="btn">View Plans</a>
-                <a href="#contact" class="btn">Join Now</a>
+            <h1 class="hero-heading">Transform Your Fitness Journey Today!</h1>
+            <p class="hero-subheading">Personalized Training • Expert Coaches • Results Guaranteed</p>
+            <button class="cta-button">Join Now</button>
+        </div>
+        <div class="hero-image-container">
+            <img src="https://i.pinimg.com/736x/f5/51/48/f55148ad2ef92de8597008b60bcd29a8.jpg" alt="Gym Interior" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Gym Showcase Section -->
+    <section class="showcase-section">
+        <img src="https://i.pinimg.com/736x/f7/b0/5d/f7b05d5bb3f523a73aa01efeed5be53d.jpg" alt="Gym Equipment" class="showcase-image">
+    </section>
+
+    <!-- Class Schedules -->
+    <section class="schedule-section">
+        <div class="section-container">
+            <div class="schedule-text">
+                <h2>Class Schedules</h2>
+                <p>We offer a variety of classes throughout the week to fit your busy schedule.</p>
+                <ul class="schedule-list">
+                    <li><strong>Morning Sessions:</strong> 6:00 AM - 10:00 AM</li>
+                    <li><strong>Evening Sessions:</strong> 4:00 PM - 10:00 PM</li>
+                    <li><strong>Weekend Specials:</strong> Yoga & HIIT classes</li>
+                </ul>
+            </div>
+            <div class="schedule-image">
+                <img src="https://i.pinimg.com/736x/36/b4/e9/36b4e90c80ebe15005d126ce3e32b12b.jpg" alt="Group Class">
             </div>
         </div>
     </section>
 
     <!-- Membership Plans -->
-    <section id="plans">
-        <div class="section-title">
-            <h2>Membership Plans</h2>
-            <p>Choose the plan that fits your goals</p>
+    <section id="membership" class="membership-section">
+        <h2 class="section-heading">Membership Plans</h2>
+        <div class="membership-cards">
+            <!-- Gym Membership Card -->
+            <div class="membership-card">
+                <div class="card-front">
+                    <h3>Gym</h3>
+                    <div class="card-image">
+                        <img src="https://i.pinimg.com/474x/7a/1f/02/7a1f0261de4715fd78874ac0d42d55b1.jpg" alt="Gym Training">
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>💪 Lakudkar Gym Membership Package</h3>
+                    <h4>🎯 What's Included:</h4>
+                    <ul>
+                        <li>✅ 🏋️‍♂️ STRENGTH TRAINING<br>Build muscle with free weights & machines<br>Progressive overload programs</li>
+                        <li>✅ ⚡ FUNCTIONAL & CROSSFIT TRAINING<br>HIIT workouts<br>Battle ropes, kettlebells, plyometrics</li>
+                        <li>✅ 📊 CUSTOMIZED WORKOUT PLANNING & MONITORING<br>Personalized routines<br>Monthly progress tracking</li>
+                        <li>✅ 🍎 CUSTOMIZED DIET & NUTRITION CONSULTATION<br>Tailored meal plans<br>Macro calculations</li>
+                    </ul>
+                    <p class="price">💰 Pricing:<br>💲 1,500/- MONTHLY</p>
+                    <p class="value">🔥 Best value for comprehensive fitness support!</p>
+                </div>
+            </div>
+
+            <!-- Dance Membership Card -->
+            <div class="membership-card">
+                <div class="card-front">
+                    <h3>Dance</h3>
+                    <div class="card-image">
+                        <img src="https://i.pinimg.com/736x/36/b4/e9/36b4e90c80ebe15005d126ce3e32b12b.jpg" alt="Dance Class">
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>🌟 Dance Class / Zumba Class Package 🌟</h3>
+                    <ul>
+                        <li>🕺 No experience needed – Beginners welcome!</li>
+                        <li>🌍 Learn global dance styles – From Bollywood to Hip-Hop!</li>
+                        <li>💃 Feel the rhythm – Groove to upbeat music!</li>
+                        <li>💪 Full-body workout – Burn calories while having fun!</li>
+                        <li>😊 Instant mood booster – Dance your stress away!</li>
+                        <li>👯 Meet dance lovers – Join a friendly community!</li>
+                        <li>👥 Group energy – Motivating & social sessions!</li>
+                        <li>🎉 Party-like vibe – Every class feels like a celebration!</li>
+                    </ul>
+                    <p class="price">💰 Only 1500/- MONTHLY!</p>
+                    <p class="value">✨ Why Choose This Class?<br>✅ All fitness levels welcome<br>✅ Non-stop fun & movement<br>✅ Great for weight loss & stamina</p>
+                </div>
+            </div>
+
+            <!-- Calisthenics Membership Card -->
+            <div class="membership-card">
+                <div class="card-front">
+                    <h3>Calisthenics</h3>
+                    <div class="card-image">
+                        <img src="https://i.pinimg.com/736x/f4/81/51/f48151613d6c1b329c50e38ea78693f0.jpg" alt="Calisthenics">
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>💪 Calisthenics Training Package</h3>
+                    <h4>✅ What You'll Get:</h4>
+                    <ul>
+                        <li>✔ Full-Body Strength – Push-ups, Pull-ups, Dips & Muscle-Ups</li>
+                        <li>✔ Core & Mobility – Planks, Leg Raises, Handstands</li>
+                        <li>✔ Explosive Power – Plyometrics & Dynamic Movements</li>
+                        <li>✔ Lean Muscle Gain – No weights, pure functional fitness</li>
+                        <li>✔ Progressive Training – From beginner to advanced levels</li>
+                    </ul>
+                    <p class="price">💰 Pricing:<br>1 Month: ₹1500/-<br>3 Months: ₹4000/- (Save ₹500!)</p>
+                    <p class="value">🌟 Why Choose Our Calisthenics Classes?<br>✅ Suitable for all levels (Beginner to Athlete)<br>✅ Improves posture & athleticism<br>✅ Builds functional strength for real-life movements</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="grid">
-            <div class="card">
-                <h3>Gym Membership</h3>
-                <div class="price">₹1,500/month</div>
+        <div class="join-buttons">
+            <button class="join-button">Join Gym</button>
+            <button class="join-button">Join Dance</button>
+            <button class="join-button">Join Calisthenics</button>
+        </div>
+    </section>
+
+    <!-- Diet Plan Section -->
+    <section class="diet-section">
+        <h2 class="section-heading">Diet Plan</h2>
+        <div class="diet-container">
+            <div class="diet-image">
+                <img src="https://i.pinimg.com/474x/6c/e3/b2/6ce3b2be792cdd262d3bc338f4268687.jpg" alt="Healthy Food">
+            </div>
+            <div class="diet-content">
+                <h3>📊 Daily Macros (Indian Foods)</h3>
                 <ul>
-                    <li>Strength Training</li>
-                    <li>Functional & Crossfit</li>
-                    <li>Customized Workouts</li>
-                    <li>Diet Consultation</li>
-                    <li>Progress Tracking</li>
+                    <li>💪 Protein: 1.6-2.2g/kg (Eggs 🥚, Chicken 🍗, Paneer 🧀, Dal 🌱)</li>
+                    <li>⚡ Carbs: 3-5g/kg (Brown Rice 🍚, Roti 🫓, Oats 🥣)</li>
+                    <li>🫒 Fats: 0.8-1g/kg (Ghee 🧈, Nuts 🥜, Coconut 🥥)</li>
                 </ul>
-                <a href="#contact" class="btn">Join Now</a>
+                
+                <h4>⏰ Meal Timing (When to Eat?)</h4>
+                <ul>
+                    <li>Pre-Workout (1-2h before) ⚡ – Carbs + protein (banana + peanut butter)</li>
+                    <li>Post-Workout (30-60min after) 💪 – Protein + carbs (chicken + rice)</li>
+                    <li>Snacks 🥜 – Nuts, Greek yogurt, protein shake</li>
+                </ul>
+                
+                <h4>🚫 Foods to Limit</h4>
+                <ul>
+                    <li>Processed Sugar 🍩 – Spikes insulin</li>
+                    <li>Trans Fats 🍟 – Bad for heart</li>
+                    <li>Alcohol � – Slows recovery</li>
+                    <li>Excess Salt 🧂 – Bloating & BP issues</li>
+                </ul>
+                
+                <button class="view-plan-button">View Full 7-Day Plan</button>
+            </div>
+        </div>
+
+        <!-- 7-Day Plan Modal -->
+        <div id="dietModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>📅 7-Day Diet Plan</h2>
+                <div class="plan-days">
+                    <div class="plan-day">
+                        <h3>Day 1 🏋️‍♂️ (Strength Training - High Protein)</h3>
+                        <ul>
+                            <li>🌅 Pre-Workout: Banana 🍌 + Peanut Butter 🥜 + Milk 🥛</li>
+                            <li>🏋️‍♂️ Post-Workout: Roti 🫓 + Chicken Curry 🍗 + Dal 🌱 + Cucumber Salad 🥒</li>
+                            <li>☕ Snack: Sprout Chaat 🌱 + Almonds 🥜</li>
+                            <li>🌙 Dinner: Brown Rice 🍚 + Fish Curry 🐟 + Bhindi Sabzi 🥗</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 2 🏃‍♂️ (HIIT - Moderate Carb)</h3>
+                        <ul>
+                            <li>🌅 Pre-Workout: Poha 🍚 + Boiled Egg 🥚</li>
+                            <li>🏃‍♂️ Post-Workout: Quinoa 🍛 + Moong Dal 🌱 + Curd 🥄</li>
+                            <li>☕ Snack: Greek Yogurt 🥣 + Chia Seeds ✨</li>
+                            <li>🌙 Dinner: Jowar Roti 🫓 + Palak Paneer 🧀 + Sprouts 🌱</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 3 🦵 (Leg Day - High Energy)</h3>
+                        <ul>
+                            <li>🌅 Pre-Workout: Oats 🥣 + Whey 💊 + Dates 🍇</li>
+                            <li>🦵 Post-Workout: Rice 🍚 + Mutton Curry 🍖 + Beetroot Salad 🥗</li>
+                            <li>☕ Snack: Chana Chaat 🌱 + Green Chutney 🍃</li>
+                            <li>🌙 Dinner: Bajra Roti 🫓 + Dal Tadka 🌱 + Mushrooms 🍄</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 4 💪 (Upper Body - Balanced)</h3>
+                        <ul>
+                            <li>🌅 Pre-Workout: Upma 🍛 + Buttermilk 🥛</li>
+                            <li>💪 Post-Workout: Roti 🫓 + Egg Bhurji 🍳 + Curd 🥄</li>
+                            <li>☕ Snack: Makhana 🍿 + Ghee 🧈</li>
+                            <li>🌙 Dinner: Khichdi 🍚 + Kadhi 🥣</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 5 🚴 (Endurance - Carb Cycling)</h3>
+                        <ul>
+                            <li>🌅 Pre-Workout: Idli 🍘 + Sambar 🍛</li>
+                            <li>🚴 Post-Workout: Brown Rice 🍚 + Grilled Fish 🐟 + Lauki Sabzi 🥗</li>
+                            <li>☕ Snack: Fruit Salad 🍉 + Walnuts 🥜</li>
+                            <li>🌙 Dinner: Missi Roti 🫓 + Dal 🌱 + Bhindi Sabzi 🥗</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 6 🧘 (Active Recovery - Low Carb)</h3>
+                        <ul>
+                            <li>🌅 Breakfast: Egg Whites 🥚 + Spinach Omelet 🍳</li>
+                            <li>🍽️ Lunch: Quinoa 🍛 + Chana Masala 🌱 + Cucumber Raita 🥒</li>
+                            <li>☕ Snack: Coconut Water 🥥 + Pumpkin Seeds 🎃</li>
+                            <li>🌙 Dinner: Tofu 🧈 + Mushroom Soup 🍄</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 7 🛌 (Rest Day - Flexible)</h3>
+                        <ul>
+                            <li>🍳 Brunch: Dosa 🍘 + Sambar 🍛 + Flaxseed Chutney ✨</li>
+                            <li>☕ Snack: Lassi 🥛 + Sunflower Seeds 🌻</li>
+                            <li>💪 Muscle Gain: Add ghee 🧈 or extra eggs 🥚</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workout Routine Section -->
+    <section class="workout-section">
+        <h2 class="section-heading">Daily Routine Workout</h2>
+        
+        <!-- Gym Workout -->
+        <div class="workout-container">
+            <div class="workout-content">
+                <h3>🏋️‍♂️ 6-Day Gym Workout Split</h3>
+                <p><strong>Goal:</strong> Build muscle 💪, strength 🔥 & endurance 🏃‍♂️</p>
+                <p><strong>Rest Day:</strong> Sunday 🧘 (active recovery: yoga/walking)</p>
+                
+                <h4>🏋️‍♂️ Gym Essentials</h4>
+                <ul>
+                    <li>Dumbbells 🏋️‍♂️💪 – Versatile for strength training.</li>
+                    <li>Barbell 🏋️‍♂️🔥 – For squats, deadlifts, and bench press.</li>
+                    <li>Treadmill 🏃‍♂️🌀 – Cardio king.</li>
+                    <li>Resistance Bands 🎗️💥 – Portable strength & mobility.</li>
+                    <li>Gym Mat 🧘‍♂️🟢 – Stretching & core workouts.</li>
+                </ul>
+                
+                <button class="view-plan-button" id="gymPlanBtn">View 6-Day Gym Workout Split</button>
+            </div>
+            <div class="workout-image">
+                <img src="https://i.pinimg.com/474x/7a/1f/02/7a1f0261de4715fd78874ac0d42d55b1.jpg" alt="Gym Workout">
+            </div>
+        </div>
+
+        <!-- Gym Workout Modal -->
+        <div id="gymModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>🏋️‍♂️ 6-Day Gym Workout Split</h2>
+                <div class="plan-days">
+                    <div class="plan-day">
+                        <h3>Day 1️⃣ (Monday): Chest & Triceps</h3>
+                        <ul>
+                            <li>Flat Bench Press – 4x6-8 🏋️‍♂️</li>
+                            <li>Incline Dumbbell Press – 3x8-10 🏋️‍♀️</li>
+                            <li>Cable Flys – 3x12 ✨</li>
+                            <li>Triceps Dips – 3xMAX 💪</li>
+                            <li>Skull Crushers – 3x10-12 🦾</li>
+                            <li>(Finish: 10 min incline treadmill walk 🚶‍♂️)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 2️⃣ (Tuesday): Back & Biceps</h3>
+                        <ul>
+                            <li>Pull-Ups – 4x6-8 (add weight if advanced) 🏋️‍♂️</li>
+                            <li>Barbell Rows – 3x8-10 🏋️‍♀️</li>
+                            <li>Lat Pulldown – 3x10-12 🔄</li>
+                            <li>Deadlifts – 3x5 (heavy!) ⚡</li>
+                            <li>Hammer Curls – 3x12 💥</li>
+                            <li>(Stretch: 5 min lats/biceps 🧘)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 3️⃣ (Wednesday): Legs (Quads Focus)</h3>
+                        <ul>
+                            <li>Squats – 4x6-8 🦵</li>
+                            <li>Bulgarian Split Squats – 3x8/leg 🏋️‍♀️</li>
+                            <li>Leg Press – 3x10-12 🚂</li>
+                            <li>Leg Extensions – 3x15 (slow!) 🐢</li>
+                            <li>Calf Raises – 4x15 👟</li>
+                            <li>(Cool down: 5 min bike 🚴‍♂️)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 4️⃣ (Thursday): Shoulders & Abs</h3>
+                        <ul>
+                            <li>Overhead Press – 4x6-8 🏋️‍♂️</li>
+                            <li>Lateral Raises – 3x12-15 ✈️</li>
+                            <li>Face Pulls – 3x15 🔄</li>
+                            <li>Hanging Leg Raises – 3x12-15 🦵</li>
+                            <li>Russian Twists – 3x20/side 🔄</li>
+                            <li>(Finish: 10 min rowing 🚣‍♂️)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 5️⃣ (Friday): Arms (Hypertrophy)</h3>
+                        <ul>
+                            <li>Close-Grip Bench – 3x10-12 🏋️‍♂️</li>
+                            <li>EZ Bar Curls – 3x10-12 💪</li>
+                            <li>Triceps Rope Pushdown – 3x12-15 🦾</li>
+                            <li>Preacher Curls – 3x12 🔥</li>
+                            <li>(Superset biceps/triceps for pump! 💥)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 6️⃣ (Saturday): Legs (Hamstrings/Glutes) + HIIT</h3>
+                        <ul>
+                            <li>Romanian Deadlifts – 4x8 🏋️‍♀️</li>
+                            <li>Hip Thrusts – 3x10-12 🍑</li>
+                            <li>Leg Curls – 3x12-15 🦵</li>
+                            <li>Farmer's Walk – 3x30 sec 🚶‍♂️</li>
+                            <li>HIIT Finisher:<br>30 sec Sprint / 30 sec Walk – 8 rounds ⚡</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calisthenics Workout -->
+        <div class="workout-container reverse">
+            <div class="workout-image">
+                <img src="https://i.pinimg.com/736x/f4/81/51/f48151613d6c1b329c50e38ea78693f0.jpg" alt="Calisthenics">
+            </div>
+            <div class="workout-content">
+                <h3>🏋️‍♂️ 6-Day Calisthenics Plan</h3>
+                <p><strong>Goal:</strong> Build strength 💪, muscle 🏋️‍♂️, and mobility 🧘‍♂️</p>
+                <p><strong>Rest Day:</strong> Sunday (active recovery: yoga/stretching) 🧘‍♀️</p>
+                
+                <h4>🤸‍♂️ Skill-Based Moves (Advanced)</h4>
+                <ul>
+                    <li>Muscle-Up (Pull-Up + Dip Combo) 🚪💥⬆️</li>
+                    <li>Front Lever (Core & Back Strength) 🏋️‍♂️🌍</li>
+                    <li>Planche (Shoulder & Core Mastery) 🏋️‍♂️🔥</li>
+                    <li>Human Flag (Full-Body Power) 🚩💪</li>
+                </ul>
+                
+                <h4>🧘‍♂️ Cool Down</h4>
+                <ul>
+                    <li>Static Stretching 🧘‍♂️</li>
+                    <li>Deep Breathing 🌬️</li>
+                    <li>Hydration 💧</li>
+                </ul>
+                
+                <p><strong>💡 Pro Tips:</strong><br>
+                ✔️ Consistency > Intensity – Progress gradually!<br>
+                ✔️ Form First – Avoid injuries.<br>
+                ✔️ Rest & Recovery – Muscles grow during rest! 💤</p>
+                
+                <button class="view-plan-button" id="calisthenicsPlanBtn">View 6-Day Calisthenics Plan</button>
+            </div>
+        </div>
+
+        <!-- Calisthenics Workout Modal -->
+        <div id="calisthenicsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>🏋️‍♂️ 6-Day Calisthenics Plan</h2>
+                <div class="plan-days">
+                    <div class="plan-day">
+                        <h3>Day 1️⃣ (Monday): Upper Body Push</h3>
+                        <ul>
+                            <li>Push-Ups – 4x12-15 🏋️‍♂️ (slow, full range)</li>
+                            <li>Pike Push-Ups – 3x8-10 ✋ (shoulder focus)</li>
+                            <li>Dips (Parallel Bars/Chair) – 3x8-10 🔄</li>
+                            <li>Handstand Holds – 3x20-30 sec ⏳ (against wall)</li>
+                            <li>Triceps Extensions – 3x10-12 🦾</li>
+                            <li>(Finish: 5 min wrist mobility drills ✋)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 2️⃣ (Tuesday): Upper Body Pull</h3>
+                        <ul>
+                            <li>Pull-Ups – 4x6-8 🏋️‍♂️ (strict form)</li>
+                            <li>Bodyweight Rows (Table/TRX) – 3x10-12 🔄</li>
+                            <li>Archer Rows – 3x6/side 🎯 (scaled: feet on ground)</li>
+                            <li>Hanging Leg Raises – 3x12-15 🦵</li>
+                            <li>Plank to Failure – 3xMAX ⏳</li>
+                            <li>(Stretch: 5 min lats & biceps 🧘‍♂️)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 3️⃣ (Wednesday): Legs & Core</h3>
+                        <ul>
+                            <li>Pistol Squats – 3x5/side 🦵 (assisted if needed)</li>
+                            <li>Jump Squats – 3x12-15 ⚡</li>
+                            <li>Nordic Hamstring Curls – 3x6-8 🏋️‍♀️ (slow negatives)</li>
+                            <li>L-Sit Holds – 3x15-20 sec ⏳ (tucked if advanced)</li>
+                            <li>Dragon Flags – 3x6-8 🐉 (scaled: negatives)</li>
+                            <li>(Cool down: 5 min hip stretches 🧘‍♀️)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 4️⃣ (Thursday): Skill & Mobility</h3>
+                        <ul>
+                            <li>Handstand Practice – 10 min ✋ (wall holds/kicks)</li>
+                            <li>Front Lever Progressions – 3x8-10 sec 🏋️‍♂️ (tuck/adv. tuck)</li>
+                            <li>Planche Lean Holds – 3x20-30 sec ⏳</li>
+                            <li>Skin the Cat – 3x5 🔄 (shoulder mobility)</li>
+                            <li>Bridge Holds – 3x20 sec 🌉</li>
+                            <li>(Focus: Form over reps! 👀)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 5️⃣ (Friday): Full Body HIIT</h3>
+                        <ul>
+                            <li>Burpees – 4x10 ⚡</li>
+                            <li>Mountain Climbers – 3x20/side 🏔️</li>
+                            <li>Explosive Push-Ups – 3x8 💥</li>
+                            <li>Jump Lunges – 3x12/side 🦵</li>
+                            <li>Plank Jacks – 3x30 sec ⏳</li>
+                            <li>(Finisher: 5 min jump rope 🏃‍♂️)</li>
+                        </ul>
+                    </div>
+                    <div class="plan-day">
+                        <h3>Day 6️⃣ (Saturday): Freestyle & Play</h3>
+                        <ul>
+                            <li>Muscle-Up Progressions – 10 min 🏋️‍♂️</li>
+                            <li>Human Flag Practice – 3x5 sec/side 🚩</li>
+                            <li>Handstand Walks – 3x10 steps 🚶‍♂️</li>
+                            <li>Parkour Basics – Vaults/Rolling 🏃‍♂️</li>
+                            <li>(Have fun! 😄)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Information -->
+    <section id="location" class="info-section">
+        <h2 class="section-heading">Practical Information</h2>
+        
+        <div class="info-container">
+            <div class="map-container">
+                <h3>Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3635.570712666092!2d79.07413837515436!3d21.07967418058246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf1b58fb6519%3A0x6cbe7ba3e9ac2854!2sLakudkar&#39;s%20Fitness%20Gym!5e1!3m2!1sen!2sin!4v1743186760740!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             
-            <div class="card">
-                <h3>Dance/Zumba</h3>
-                <div class="price">₹1,500/month</div>
-                <ul>
-                    <li>All levels welcome</li>
-                    <li>Global dance styles</li>
-                    <li>Full-body workout</li>
-                    <li>Stress relief</li>
-                    <li>Friendly community</li>
-                </ul>
-                <a href="#contact" class="btn">Join Now</a>
-            </div>
-            
-            <div class="card">
-                <h3>Calisthenics</h3>
-                <div class="price">₹1,500/month</div>
-                <ul>
-                    <li>Bodyweight training</li>
-                    <li>No equipment needed</li>
-                    <li>Full-body strength</li>
-                    <li>Core & mobility</li>
-                    <li>Progressive training</li>
-                </ul>
-                <a href="#contact" class="btn">Join Now</a>
+            <div class="hours-container">
+                <h3>Operating Hours</h3>
+                <div class="hours-content">
+                    <div>
+                        <h4>Training Days</h4>
+                        <p>Monday - Sunday</p>
+                    </div>
+                    <div>
+                        <h4>Training Time</h4>
+                        <p>6 am - 10 pm</p>
+                    </div>
+                    <div>
+                        <h4>Closed On</h4>
+                        <p>Sunday</p>
+                    </div>
+                </div>
+                
+                <h3>Parking/Transit Info</h3>
+                <div class="parking-image">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.Oke_TneWMJ1b0_M4kWrSKwHaFj&pid=Api&P=0&h=180" alt="Parking Area">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Schedule Section -->
-    <section>
-        <div class="section-title">
-            <h2>Class Schedule</h2>
-            <p>Plan your workouts with our schedule</p>
-        </div>
-        
-        <div class="two-column">
-            <div>
-                <table>
-                    <tr>
-                        <th>Day</th>
-                        <th>Morning</th>
-                        <th>Evening</th>
-                    </tr>
-                    <tr>
-                        <td>Monday-Friday</td>
-                        <td>6:00 AM - 8:00 AM</td>
-                        <td>5:00 PM - 9:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                        <td>7:00 AM - 10:00 AM</td>
-                        <td>4:00 PM - 8:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Sunday</td>
-                        <td colspan="2">Closed</td>
-                    </tr>
-                </table>
+    <!-- Contact Form -->
+    <section class="contact-section">
+        <h2 class="section-heading">Contact Us</h2>
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
             </div>
-            <div>
-                <img src="https://i.pinimg.com/736x/f5/51/48/f55148ad2ef92de8597008b60bcd29a8.jpg" alt="Gym Schedule" class="responsive-img">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
             </div>
-        </div>
-    </section>
-
-    <!-- Diet Plan -->
-    <section id="diet">
-        <div class="section-title">
-            <h2>Diet Plan</h2>
-            <p>Nutrition guidelines for optimal results</p>
-        </div>
-        
-        <div class="two-column">
-            <div>
-                <img src="https://i.pinimg.com/474x/6c/e3/b2/6ce3b2be792cdd262d3bc338f4268687.jpg" alt="Healthy Diet" class="responsive-img">
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
             </div>
-            <div class="card">
-                <h3>Daily Nutrition</h3>
-                <ul>
-                    <li>Protein: 1.6-2.2g/kg (Eggs, Chicken, Paneer)</li>
-                    <li>Carbs: 3-5g/kg (Brown Rice, Roti, Oats)</li>
-                    <li>Fats: 0.8-1g/kg (Ghee, Nuts, Coconut)</li>
-                    <li>Pre-Workout: Carbs + protein</li>
-                    <li>Post-Workout: Protein + carbs</li>
-                    <li>Snacks: Nuts, Yogurt, Protein Shake</li>
-                </ul>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
             </div>
-        </div>
-    </section>
-
-    <!-- Workout Plans -->
-    <section id="workout">
-        <div class="section-title">
-            <h2>Workout Plans</h2>
-            <p>Structured training programs</p>
-        </div>
-        
-        <div class="grid">
-            <div class="card">
-                <h3>Gym Workout</h3>
-                <ul>
-                    <li>6-day split program</li>
-                    <li>Strength & hypertrophy focus</li>
-                    <li>Progressive overload</li>
-                    <li>Cardio included</li>
-                    <li>Proper form emphasis</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h3>Calisthenics</h3>
-                <ul>
-                    <li>Bodyweight mastery</li>
-                    <li>Skill progression</li>
-                    <li>Mobility training</li>
-                    <li>No equipment needed</li>
-                    <li>Functional strength</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location -->
-    <section>
-        <div class="section-title">
-            <h2>Our Location</h2>
-            <p>Visit our state-of-the-art facility</p>
-        </div>
-        
-        <div style="height: 400px; margin: 20px 0;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3635.570712666092!2d79.07413837515436!3d21.07967418058246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf1b58fb6519%3A0x6cbe7ba3e9ac2854!2sLakudkar&#39;s%20Fitness%20Gym!5e1!3m2!1sen!2sin!4v1743186760740!5m2!1sen!2sin" width="100%" height="100%" style="border:0; border-radius: 6px;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-title">
-            <h2>Contact Us</h2>
-            <p>Get started on your fitness journey today</p>
-        </div>
-        
-        <div class="card" style="max-width: 600px; margin: 0 auto;">
-            <form>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone">
-                </div>
-                <div class="form-group">
-                    <label for="plan">Interested Plan</label>
-                    <select id="plan">
-                        <option value="">Select a plan</option>
-                        <option value="gym">Gym Membership</option>
-                        <option value="dance">Dance/Zumba</option>
-                        <option value="calisthenics">Calisthenics</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-            </form>
-        </div>
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#plans">Plans</a>
-            <a href="#diet">Diet</a>
-            <a href="#workout">Workout</a>
-            <a href="#contact">Contact</a>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg" alt="Lakudkar Gym Logo" class="footer-logo-img">
+                <span class="footer-gym-name">Lakudkar Gym</span>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#membership">Membership Plans</a></li>
+                        <li><a href="#location">Location</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Gym Training</a></li>
+                        <li><a href="#">Dance Classes</a></li>
+                        <li><a href="#">Calisthenics</a></li>
+                        <li><a href="#">Personal Training</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Nagpur, Maharashtra</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-envelope"></i> riteshrathod016@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-        <p>© 2023 Lakudkar Gym. All rights reserved.</p>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Lakudkar Gym. All Rights Reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // Simple form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you soon.');
-            this.reset();
-        });
+    <!-- 3D Animation Container -->
+    <div id="animation-container"></div>
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
