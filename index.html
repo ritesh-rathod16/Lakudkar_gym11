@@ -610,13 +610,24 @@
         }
 
         /* Contact Section */
-        .contact-form {
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
             background-color: var(--card-bg);
             border-radius: 10px;
-            padding: 2rem;
+            padding: 3rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-            margin: 0 auto;
+        }
+
+        .contact-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
         }
 
         .form-group {
@@ -625,18 +636,20 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: 500;
+            color: var(--text);
         }
 
         .form-control {
             width: 100%;
-            padding: 0.8rem;
+            padding: 1rem;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             color: var(--text);
             transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .form-control:focus {
@@ -654,6 +667,22 @@
             width: 100%;
             padding: 1rem;
             font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .text-success {
+            color: #4ade80;
+        }
+
+        .text-error {
+            color: #f87171;
         }
 
         /* Footer */
@@ -917,6 +946,10 @@
                 width: 100%;
                 margin-bottom: 2rem;
             }
+            
+            .contact-container {
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -933,6 +966,10 @@
             
             .container {
                 width: 95%;
+            }
+            
+            .contact-container {
+                padding: 1.5rem;
             }
         }
 
@@ -1234,26 +1271,37 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container">
-        <h2 class="section-title text-center">Contact Us</h2>
-        <div class="contact-form">
-            <form id="contactForm">
+        <div class="contact-container">
+            <h2 class="section-title contact-title">Contact Us</h2>
+            <p class="contact-subtitle">Fill up the form below to send us a message.</p>
+            
+            <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3" />
+                <input type="hidden" name="subject" value="Dear Lakudkar Gym Someone Is Interested From Your Website" />
+                <input type="checkbox" name="botcheck" id="" style="display: none;" />
+                
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" required>
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="your@email.com" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" class="form-control">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 9876543210" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" class="form-control" required></textarea>
+                    <label for="message">Your Message</label>
+                    <textarea name="message" id="message" class="form-control" placeholder="Your Message" required></textarea>
                 </div>
+                
                 <button type="submit" class="btn submit-btn">Send Message</button>
+                <p id="result"></p>
             </form>
         </div>
     </section>
@@ -1735,26 +1783,52 @@
         
         // Contact Form
         const contactForm = document.getElementById('contactForm');
+        const result = document.getElementById('result');
         
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
+            const formData = new FormData(contactForm);
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            const json = JSON.stringify(object);
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it and show an alert
-            console.log({ name, email, phone, message });
+            result.textContent = "Please wait...";
+            result.className = "";
             
-            // Send email (this would require server-side code in a real implementation)
-            // For demo purposes, we'll simulate it
-            setTimeout(() => {
-                alert('Thank you for your message! We will contact you soon.');
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.textContent = json.message;
+                    result.classList.add("text-success");
+                } else {
+                    console.log(response);
+                    result.textContent = json.message;
+                    result.classList.add("text-error");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                result.textContent = "Something went wrong!";
+                result.classList.add("text-error");
+            })
+            .then(function() {
                 contactForm.reset();
-            }, 1000);
+                setTimeout(() => {
+                    result.textContent = "";
+                    result.className = "";
+                }, 5000);
+            });
         });
         
         // 3D Animation with Three.js
