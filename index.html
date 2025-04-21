@@ -611,23 +611,23 @@
 
         /* Contact Section */
         .contact-container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             background-color: var(--card-bg);
             border-radius: 10px;
-            padding: 3rem;
+            padding: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .contact-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-subtitle {
             text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .form-group {
@@ -636,20 +636,18 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--text);
         }
 
         .form-control {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             color: var(--text);
             transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
         }
 
         .form-control:focus {
@@ -667,21 +665,19 @@
             width: 100%;
             padding: 1rem;
             font-size: 1rem;
-            margin-top: 1rem;
         }
 
-        #result {
+        .form-result {
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             font-size: 0.9rem;
-            transition: var(--transition);
         }
 
-        .text-success {
+        .form-result.success {
             color: #4ade80;
         }
 
-        .text-error {
+        .form-result.error {
             color: #f87171;
         }
 
@@ -946,10 +942,6 @@
                 width: 100%;
                 margin-bottom: 2rem;
             }
-            
-            .contact-container {
-                padding: 2rem;
-            }
         }
 
         @media (max-width: 576px) {
@@ -966,10 +958,6 @@
             
             .container {
                 width: 95%;
-            }
-            
-            .contact-container {
-                padding: 1.5rem;
             }
         }
 
@@ -1272,7 +1260,7 @@
     <!-- Contact Section -->
     <section id="contact" class="container">
         <div class="contact-container">
-            <h2 class="section-title contact-title">Contact Us</h2>
+            <h2 class="contact-title">Contact Us</h2>
             <p class="contact-subtitle">Fill up the form below to send us a message.</p>
             
             <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
@@ -1282,17 +1270,17 @@
                 
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Ritesh Rathod" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="your@email.com" required>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="you@company.com" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 9876543210" required>
+                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 1234567890" required>
                 </div>
                 
                 <div class="form-group">
@@ -1301,7 +1289,7 @@
                 </div>
                 
                 <button type="submit" class="btn submit-btn">Send Message</button>
-                <p id="result"></p>
+                <p class="form-result" id="result"></p>
             </form>
         </div>
     </section>
@@ -1788,15 +1776,16 @@
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Show loading state
+            result.textContent = "Please wait...";
+            result.className = "form-result";
+            
             const formData = new FormData(contactForm);
             const object = {};
             formData.forEach((value, key) => {
                 object[key] = value;
             });
             const json = JSON.stringify(object);
-            
-            result.textContent = "Please wait...";
-            result.className = "";
             
             fetch("https://api.web3forms.com/submit", {
                 method: "POST",
@@ -1810,23 +1799,25 @@
                 let json = await response.json();
                 if (response.status == 200) {
                     result.textContent = json.message;
-                    result.classList.add("text-success");
+                    result.classList.remove("form-result");
+                    result.classList.add("form-result", "success");
+                    contactForm.reset();
                 } else {
-                    console.log(response);
                     result.textContent = json.message;
-                    result.classList.add("text-error");
+                    result.classList.remove("form-result");
+                    result.classList.add("form-result", "error");
                 }
             })
             .catch((error) => {
                 console.log(error);
                 result.textContent = "Something went wrong!";
-                result.classList.add("text-error");
+                result.classList.remove("form-result");
+                result.classList.add("form-result", "error");
             })
             .then(function() {
-                contactForm.reset();
                 setTimeout(() => {
                     result.textContent = "";
-                    result.className = "";
+                    result.className = "form-result";
                 }, 5000);
             });
         });
