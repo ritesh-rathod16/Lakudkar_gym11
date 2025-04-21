@@ -36,6 +36,9 @@
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
+            padding-bottom: 60px;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4 {
@@ -142,7 +145,7 @@
         .loader-logo {
             width: 150px;
             height: 150px;
-            background: url('https://cdn.corenexis.com/view/?img=d/ap21/h5PdVq.jpg') center/cover no-repeat;
+            background: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__') center/cover no-repeat;
             border-radius: 50%;
             margin-bottom: 1rem;
             animation: pulse 1.5s infinite alternate;
@@ -196,7 +199,7 @@
         .logo-img {
             width: 50px;
             height: 50px;
-            background: url('https://cdn.corenexis.com/view/?img=d/ap21/h5PdVq.jpg') center/cover no-repeat;
+            background: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__') center/cover no-repeat;
             border-radius: 50%;
             margin-right: 1rem;
         }
@@ -460,6 +463,10 @@
         }
 
         /* Diet Plan Section */
+        #diet {
+            background-color: var(--primary);
+        }
+
         .diet-plan {
             background-color: var(--card-bg);
             border-radius: 10px;
@@ -477,7 +484,7 @@
         .diet-image {
             flex: 0 0 40%;
             height: 300px;
-            background: url('https://i.pinimg.com/474x/6c/e3/b2/6ce3b2be792cdd262d3bc338f4268687.jpg') center/cover no-repeat;
+            background: url('https://i.pinimg.com/474x/3c/51/d1/3c51d1fd754cfb70ec89502afee738a9.jpg') center/cover no-repeat;
             border-radius: 10px;
         }
 
@@ -558,8 +565,8 @@
         .workout-image {
             flex: 0 0 40%;
             height: 300px;
-            background-size: cover;
-            background-position: center;
+            background: url('https://i.pinimg.com/474x/3c/51/d1/3c51d1fd754cfb70ec89502afee738a9.jpg') center/cover no-repeat;
+            border-radius: 10px;
         }
 
         .workout-text {
@@ -684,15 +691,19 @@
         /* Footer */
         footer {
             background-color: rgba(18, 18, 18, 0.9);
-            padding: 4rem 0 2rem;
-            position: relative;
+            padding: 2rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
 
         .footer-logo {
@@ -704,7 +715,7 @@
         .footer-logo-img {
             width: 50px;
             height: 50px;
-            background: url('https://cdn.corenexis.com/view/?img=d/ap21/h5PdVq.jpg') center/cover no-repeat;
+            background: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__') center/cover no-repeat;
             border-radius: 50%;
             margin-right: 1rem;
         }
@@ -795,10 +806,9 @@
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
             font-size: 0.9rem;
+            padding-top: 1rem;
         }
 
         /* Modal */
@@ -942,6 +952,14 @@
                 width: 100%;
                 margin-bottom: 2rem;
             }
+
+            footer {
+                position: relative;
+            }
+
+            body {
+                padding-bottom: 0;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1019,7 +1037,7 @@
 <body>
     <!-- Preloader -->
     <div id="preloader">
-       <div class="loader-logo" style="background-image: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__')"></div>
+       <div class="loader-logo"></div>
         <div class="loader-text">Welcome to Lakudkar Gym</div>
     </div>
 
@@ -1027,7 +1045,7 @@
     <header id="header">
         <div class="header-container">
             <div class="logo-container">
-                <div class="logo-img" style="background-image: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__')"></div>
+                <div class="logo-img"></div>
                 <div class="logo-text">Lakudkar Gym</div>
             </div>
             
@@ -1213,7 +1231,7 @@
                         <p><strong>Rest Day:</strong> Sunday 🧘 (active recovery: yoga/walking)</p>
                         <button class="btn view-workout-btn" data-workout="gym">View 6-Day Gym Workout Split</button>
                     </div>
-                    <div class="workout-image" style="background-image: url('https://i.pinimg.com/474x/b0/3c/e5/b03ce54af40c1ff0682db0e0221737d1.jpg');"></div>
+                    <div class="workout-image"></div>
                 </div>
             </div>
         </div>
@@ -1221,7 +1239,7 @@
         <div class="workout-content" id="calisthenics-workout">
             <div class="workout-plan">
                 <div class="workout-split">
-                    <div class="workout-image" style="background-image: url('https://i.pinimg.com/736x/f4/81/51/f48151613d6c1b329c50e38ea78693f0.jpg');"></div>
+                    <div class="workout-image"></div>
                     <div class="workout-text">
                         <h3>🏋️‍♂️ 6-Day Calisthenics Plan</h3>
                         <p><strong>Goal:</strong> Build strength 💪, muscle 🏋️‍♂️, and mobility 🧘‍♂️</p>
@@ -1297,53 +1315,6 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <div class="footer-logo">
-                         <div class="footer-logo-img" style="background-image: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__')"></div>
-                        <div class="footer-logo-text">Lakudkar Gym</div>
-                    </div>
-                    <p>Transform your fitness journey with our expert trainers and state-of-the-art facilities.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/lakudkar.s.gym"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/lakudkars_fitness_gym"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@Lakudkars_Fitness_Gym"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#classes">Classes</a></li>
-                        <li><a href="#membership">Membership</a></li>
-                        <li><a href="#diet">Diet Plans</a></li>
-                        <li><a href="#workout">Workouts</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Contact Info</h4>
-                    <div class="contact-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Lakudkar's Fitness Gym Beltarodi, Nagpur, Maharashtra, 441108</span>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+919876543210">+91 9876543210</a>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@lakudkargym.com">info@lakudkargym.com</a>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-clock"></i>
-                        <span>Mon-Sat: 6:00 AM - 10:00 PM</span>
-                    </div>
-                </div>
-            </div>
-            
             <div class="copyright">
                 <p>&copy; 2023 Lakudkar Gym. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
             </div>
