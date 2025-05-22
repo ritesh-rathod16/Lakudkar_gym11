@@ -139,37 +139,22 @@
             opacity: 0;
         }
 
-       .loader-logo {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: pulse 1.5s infinite alternate;
-}
+        .loader-logo {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            animation: pulse 1.5s infinite alternate;
+        }
 
-.loader-logo img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 50%;
-}
+        .loader-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;
+        }
 
-/* Update the header logo styles */
-.logo-img {
-    width: 50px;
-    height: 50px;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-img img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 50%;
-}
         @keyframes pulse {
             0% { transform: scale(1); }
             100% { transform: scale(1.1); }
@@ -218,9 +203,16 @@
         .logo-img {
             width: 50px;
             height: 50px;
-            background: url('https://cdn.corenexis.com/view/?img=d/ap21/h5PdVq.jpg') center/cover no-repeat;
-            border-radius: 50%;
             margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;
         }
 
         .logo-text {
@@ -726,9 +718,16 @@
         .footer-logo-img {
             width: 50px;
             height: 50px;
-            background: url('https://cdn.corenexis.com/view/?img=d/ap21/h5PdVq.jpg') center/cover no-repeat;
-            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-right: 1rem;
+        }
+
+        .footer-logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;
         }
 
         .footer-logo-text {
@@ -1039,15 +1038,23 @@
     </style>
 </head>
 <body>
-    <!-- In the preloader section -->
-<div class="loader-logo">
-    <img src="gym logo.png" alt="Lakudkar Gym Logo">
-</div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-logo">
+            <img src="gym logo.png" alt="Lakudkar Gym Logo">
+        </div>
+        <div class="loader-text">Welcome to Lakudkar Gym</div>
+    </div>
 
-<!-- In the header section -->
-<div class="logo-img">
-    <img src="gym logo.png" alt="Lakudkar Gym Logo">
-</div>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-img">
+                    <img src="gym logo.png" alt="Lakudkar Gym Logo">
+                </div>
+                <div class="logo-text">Lakudkar Gym</div>
+            </div>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -1318,7 +1325,9 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <div class="footer-logo">
-                         <div class="footer-logo-img" style="background-image: url('https://media-hosting.imagekit.io/c1ab74a3f47f431f/gym%20logo.jpg?Expires=1837705785&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TYJAxh6mjPtoHZVw~zuArvoiv~lTPsuUFaCcZet1ONDrorjBp5Gu3Z0JSgllFRKB6jySfr~cCeZaESwR5biHtISUhncCx6wO8CouX7M6BvBAUF0S-PgUQ4RaiSuvSXYIxZRa7T8D-vNcVsYlB8BUBGNWGEuhBcACDVr4dV-cpmYW35MGndbL~UmDjTEbmerYp8Vr-sJssoxBmtVjKnhWQd6Ah2FOuiq5s6reLohIPevwjN6K60b59fgfZFbdeXA~oDTgUW3iqQ6CjPacPERi6n3WyKWh3YKvg9VJS-FjDa58WD229czHbYXQTl5OU5cQVcpYGnLrK8rWNQS2s7~Qqg__')"></div>
+                        <div class="footer-logo-img">
+                            <img src="logo.png" alt="Lakudkar Gym Logo">
+                        </div>
                         <div class="footer-logo-text">Lakudkar Gym</div>
                     </div>
                     <p>Transform your fitness journey with our expert trainers and state-of-the-art facilities.</p>
@@ -1870,10 +1879,23 @@
             const dumbbells = [];
             const dumbbellGeometry = new THREE.CylinderGeometry(0.5, 0.5, 3, 32);
             const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+            
+            // Load logo texture
+            const textureLoader = new THREE.TextureLoader();
+            const logoTexture = textureLoader.load('logo.png');
+            
             const material = new THREE.MeshPhongMaterial({ 
                 color: 0xd4af37,
                 shininess: 100,
                 specular: 0x111111
+            });
+            
+            const weightMaterial = new THREE.MeshPhongMaterial({ 
+                map: logoTexture,
+                color: 0xd4af37,
+                shininess: 100,
+                specular: 0x111111,
+                transparent: true
             });
             
             // Create 5 dumbbells in different positions
@@ -1884,11 +1906,11 @@
                 const bar = new THREE.Mesh(dumbbellGeometry, material);
                 bar.rotation.x = Math.PI / 2;
                 
-                // Weights
-                const weight1 = new THREE.Mesh(sphereGeometry, material);
+                // Weights with logo
+                const weight1 = new THREE.Mesh(sphereGeometry, weightMaterial);
                 weight1.position.x = -2;
                 
-                const weight2 = new THREE.Mesh(sphereGeometry, material);
+                const weight2 = new THREE.Mesh(sphereGeometry, weightMaterial);
                 weight2.position.x = 2;
                 
                 dumbbell.add(bar);
