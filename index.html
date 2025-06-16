@@ -147,12 +147,18 @@
             justify-content: center;
             margin-bottom: 1rem;
             animation: pulse 1.5s infinite alternate;
+            position: relative;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
         }
 
         .loader-logo img {
             max-width: 100%;
             max-height: 100%;
             border-radius: 50%;
+            border: 2px solid rgba(212, 175, 55, 0.5);
         }
 
         @keyframes pulse {
@@ -207,12 +213,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            padding: 3px;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
         }
 
         .logo-img img {
             max-width: 100%;
             max-height: 100%;
             border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .logo-text {
@@ -722,12 +734,18 @@
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
+            position: relative;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         .footer-logo-img img {
             max-width: 100%;
             max-height: 100%;
             border-radius: 50%;
+            border: 2px solid rgba(212, 175, 55, 0.3);
         }
 
         .footer-logo-text {
@@ -1882,7 +1900,7 @@
             
             // Load logo texture
             const textureLoader = new THREE.TextureLoader();
-            const logoTexture = textureLoader.load('logo.png');
+            const logoTexture = textureLoader.load('gym logo.jpg');
             
             const material = new THREE.MeshPhongMaterial({ 
                 color: 0xd4af37,
@@ -1892,10 +1910,18 @@
             
             const weightMaterial = new THREE.MeshPhongMaterial({ 
                 map: logoTexture,
-                color: 0xd4af37,
+                color: 0xffffff,
                 shininess: 100,
                 specular: 0x111111,
                 transparent: true
+            });
+            
+            // Create golden frame geometry
+            const frameGeometry = new THREE.TorusGeometry(1.1, 0.1, 16, 100);
+            const frameMaterial = new THREE.MeshPhongMaterial({
+                color: 0xd4af37,
+                shininess: 100,
+                specular: 0x111111
             });
             
             // Create 5 dumbbells in different positions
@@ -1910,8 +1936,18 @@
                 const weight1 = new THREE.Mesh(sphereGeometry, weightMaterial);
                 weight1.position.x = -2;
                 
+                // Add golden frame to weight1
+                const frame1 = new THREE.Mesh(frameGeometry, frameMaterial);
+                frame1.position.x = -2;
+                weight1.add(frame1);
+                
                 const weight2 = new THREE.Mesh(sphereGeometry, weightMaterial);
                 weight2.position.x = 2;
+                
+                // Add golden frame to weight2
+                const frame2 = new THREE.Mesh(frameGeometry, frameMaterial);
+                frame2.position.x = 2;
+                weight2.add(frame2);
                 
                 dumbbell.add(bar);
                 dumbbell.add(weight1);
